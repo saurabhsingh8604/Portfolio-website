@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <!-- <script defer src="index.js"></script> -->
+    
+    <link rel="stylesheet" href="./css/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header class="header">
+        <a href="#">
+            <h1 class="logo logo-heading">KRISHNA</h1>
+        </a>
+    
+        <nav class="navbar">
+            <ul class="navbar-lists">
+                <li><a href="index.html" class="navbar-link home-link">Home</a></li>
+                <li><a href="index.html" class="navbar-link about-link">About</a></li>
+                <li><a href="projects.html" class="navbar-link projects-link">Projects</a></li>
+                <li><a href="index.html" class="navbar-link contact-link">Contact</a></li>
+                <li><a href="index.html" class="navbar-link achievement-link">Achievements</a></li>
+            </ul>
+        </nav>
+        <div class="mobile-navbar-btn">
+            <i class="fa-solid fa-bars mobile-nav-icon" name="menu-outline"></i>
+            <i name="close-outline" class="fa-solid fa-circle-x mobile-nav-icon">x</i>
+            <!-- <i name="close-outline" class="fa-solid fa-xmark-large "></i> -->
+        </div>
+    </header>
+
+
+
+    <section class="section section-all-projects">
+        <h2 class="heading all-projects-heading">
+            Projects
+        </h2>
+
+        <div class="p-btns">
+            <div class="btn p-btn p-btn-active" data-btn-num="1" >porfolio website</div>
+            <div class="btn p-btn p-btn-active" data-btn-num="2">web application</div>
+            <div class="btn p-btn p-btn-active" data-btn-num="3"> ML Projects</div>
+        </div>
+
+        <div class="container grid grid-three-column all-projects-images">
+            <div class="img-overlay p-btn--1">
+                <img src="./images/projects/portfolio.jpg" alt="my-projects" class="p-image p-image-1">
+                <div class="overlay">
+                    <a href="https://my-portfolio-prashant9154.herokuapp.com/" target="_blank" class="all-project-heading">Portfolio Website</a>
+                </div>
+            </div>
+           
+            <div class="img-overlay p-btn--2">
+                <img src="./images/projects/chat-application.jpg" alt="my-projects" class="p-image p-image-3">
+                <div class="overlay">
+                    <a href="#" target="_blank" class="all-project-heading">Travel-Website</a>
+                </div>
+            </div>
+            <div class="img-overlay p-btn--2 ">
+                <img src="./images/projects/weather app.jpg" alt="my-projects" class="p-image p-image-4">
+                <div class="overlay">
+                    <a href="#" target="_blank" class="all-project-heading">Weather-App</a>
+                </div>
+            </div>
+            <div class="img-overlay p-btn--2">
+                <img src="./images/projects/spam-detection.jpg" alt="my-projects" class="p-image p-image-5">
+                <div class="overlay">
+                    <a href="https://insight-3d.netlify./" target="_blank" class="all-project-heading">INSIGHT-3D AR </a>
+                </div>
+            </div>
+            <div class="img-overlay p-btn--3">
+                <img src="./images/projects/cam-scan2.png" alt="my-projects" class="p-image p-image-2">
+                <div class="overlay">
+                    <a href="https://github.com/saurabhsingh8604/Projects/tree/main/Codeforces%20Tool" target="_blank" class="all-project-heading">CodeForces Tool </a>
+                </div>
+            </div>
+            <div class="img-overlay p-btn--3">
+                <img src="./images/projects/cam-scan.jpg" alt="my-projects" class="p-image p-image-2">
+                <div class="overlay">
+                    <a href="https://colab.research.google.com/drive/1H5omZtw82Il6M3R2b5AGViIaA4UTo5dk?usp=sharing" target="_blank" class="all-project-heading">News Summarizer</a>
+                </div>
+            </div>
+            
+            <!-- <div class="img-overlay p-btn--3">
+                <img src="../images/projects/cam-scan.jpg" alt="my-projects" class="p-image p-image-6">
+                <div class="overlay">
+                    <a href="#" target="_blank" class="all-project-heading">Project 6</a>
+                </div>
+            </div> -->
+        </div>
+    </section>
+
+    <footer class="section-footer">
+        <p>© created by Saurabh Singh - copyright 2022</p>
+    </footer>
+
+
+    <script>
+        // ========================================
+            //  Creating a portfolio tabbed component
+            // ========================================
+
+            const p_btns = document.querySelector(".p-btns");
+            const p_btn = document.querySelectorAll(".p-btn");
+            const p_img_elem = document.querySelectorAll(".img-overlay");
+            const counterNum = document.querySelectorAll(".counter-numbers");
+
+
+            p_btns.addEventListener("click", (e) => {
+                const p_btn_clicked = e.target;
+
+                console.log(p_btn_clicked);
+
+                p_btn.forEach((curElem) => curElem.classList.remove("p-btn-active"));
+
+                p_btn_clicked.classList.add("p-btn-active");
+
+                // to find the number in data attr.
+                const btn_num = p_btn_clicked.dataset.btnNum;
+                console.log(btn_num);
+                if(btn_num){
+                    const img_active = document.querySelectorAll(`.p-btn--${btn_num}`);
+
+                    p_img_elem.forEach((curImg) => curImg.classList.add("p-image-not-active"));
+
+                    img_active.forEach((actImg) => actImg.classList.remove("p-image-not-active"));
+                }
+            });
+
+
+            // ========================================
+                // Responsive navigation
+                // ========================================
+                const mobile_nav = document.querySelector(".mobile-navbar-btn");
+                const nav_header = document.querySelector("header");
+
+                const toggleNavbar = () => {
+                    // alert("hi");
+                    nav_header.classList.toggle("active");
+                };
+
+                mobile_nav.addEventListener("click", () => toggleNavbar());
+
+                // ========================================
+                // sticky navigation
+                // ========================================
+                const sectionHero = document.querySelector(".section-hero");
+
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        const ent = entries[0];
+                        console.log(ent);
+                        !ent.isIntersecting ?
+                            document.body.classList.add("sticky") :
+                            document.body.classList.remove("sticky");
+                    }, {
+                    // viewport
+                    root: null,
+                    threshold: 0,
+                    rootMargin: "-100px",
+                }
+                );
+                // when the hero section end part reached then we need to show the sticky navigation
+                observer.observe(sectionHero);
+
+    </script>
+</body>
+</html>
